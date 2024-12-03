@@ -143,7 +143,7 @@ function addArtworks() {
             video: 'videos/delay.mp4'  // 비디오 경로 추가
         },
         {
-            img: 'img/Chair.jpg',
+            img: 'img/chair.jpg',
             title: 'an unthinking chair',
             video: 'videos/2023_DIAF_Chair.mp4'
         },
