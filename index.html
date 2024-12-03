@@ -36,7 +36,7 @@
     <main>
         <div id="works">
             <div id="videoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000;">
-                <div style="position: relative; width: 100%; height: 100%; margin: 5% auto;">
+                <div style="position: relative; width: 80%; height: 80%; margin: 5% auto;">
                     <video id="artworkVideo" style="width: 100%; height: 100%;" controls>
                         <source src="" type="video/mp4">
                     </video>
@@ -52,8 +52,9 @@
         <div id="about" class="band hidden hoge en">
             <div class="profile">
                 <div class="profile-left">
-                    <!-- 픽셀 아트 이미지 -->
-                    <img src="./images/profile-pixel.png" alt="Profile" class="profile-image">
+                    <!-- 픽셀 아트 -->
+                     <canvas id="pixel-art" width="240" height="240"></canvas>
+
                 </div>
                 <div class="profile-right">
                     <h2>Profile</h2>
@@ -85,15 +86,21 @@
                 <h2>Accounts</h2>
                 <div class="block accounts">
                     <dl>
-                        <dt><a href="https://blog.naver.com/dragonmch" target="_blank" rel="noopener noreferrer nofollow">Naver Blog</a></dt>
+                        <dt><a href="https://blog.naver.com/dragonmch" target="_blank" rel="noopener noreferrer nofollow" class ="naver">Naver Blog</a></dt>
                         <dd>공부 및 개발과정을 올립니다.</dd>
+                        <dt><a href="https://github.com/Omongg" target="_blank" rel="noopener noreferrer nofollow" class="github">GitHub</a></dt>
+                        <dd>개발관련 오픈소스들을 올립니다.</dd>
                     </dl>
                 </div>
                 <h2>Activities</h2>
                 <h3>SeoulArts</h3>
                 <div class="block activities">
                     <dl>
-                        <dt>2023 Digital</dt>
+                        <dt>Digital Art Festival</dt>
+                        <dd>2023 DIAF &lt; MULTI PAIRING &gt;</dd>
+                        <dd>2024 DIAF &lt; Door &gt;</dd>
+                        <dt>Interactive installation</dt>
+                        <dd>&lt; Umpah Umpah &gt;</dd>
                     </dl>
                 </div>
             </div>

@@ -11,9 +11,16 @@
     flex-direction: row;
 }
 .profile-left {
-    width: 250px;
-    height: 250px;
+    width: 240px;
+    height: 240px;
     cursor: pointer;
+    overflow: hidden;
+}
+
+#pixel-art{
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 .profile-right{
     padding-top: 2em;
@@ -34,12 +41,31 @@
     margin: 1em 0 0.75em 0;
 }
 
+#about h3{
+    margin: 0;
+}
 
 .profile dt,
-.likes dt {
+.likes dt,
+.accounts dt{
     float: left;
 }
 
+.accounts dt a{
+    text-decoration: none;
+}
+
+.naver{
+    color:green;
+}
+
+.github{
+    color:black;
+}
+
+.accounts dt a:hover{
+    text-decoration: underline;
+}
 .profile dd:not(:last-child) {
     float: left;
     margin: 0;
@@ -51,10 +77,19 @@ dd::before {
     margin: 0 0.5em;
 }
 
+.accounts dd::before,
+.activities dd::before {
+    content: "-";
+}
+
 .profile dd::before,
 .likes dd::before {
     content: "/";
     margin: 0 0.25em;
+}
+
+.activities dd::before{
+    margin-left: 2em;
 }
 
 dd {
@@ -74,3 +109,4 @@ dd {
     display: grid;
     overflow: hidden;
 }
+
