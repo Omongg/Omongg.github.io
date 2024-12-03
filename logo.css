@@ -1,0 +1,54 @@
+.logo-p {
+    fill: none;
+	stroke-width: 4;
+	stroke: #007BFF;
+	transform-origin: center;
+	//transform-box: fill-box;
+	animation: logo-showp 0.5s 0.2s cubic-bezier(0.5, 0, 0, 1) both,
+		logo-showw 0.6s 0.2s cubic-bezier(0.5, 0, 0.5, 1) both;
+}
+
+.logo-c1 {
+    fill: none;
+    stroke-width: 3;
+    stroke:#2455;
+	transform-origin: center;
+	transform-box: fill-box;
+	animation: logo-show 0.25s 0.4s cubic-bezier(0, 0, 0.5, 1) both;
+}
+
+.logo-c2 {
+	transform-origin: center;
+	transform-box: fill-box;
+	animation: logo-show 0.2s 0.5s cubic-bezier(0, 0, 0.5, 1) both;*/
+}
+
+@keyframes logo-show {
+	0% {
+		transform: scale(0, 0);
+	}
+
+	100% {
+		transform: scale(1, 1);
+	}
+}
+
+@keyframes logo-showp {
+	0% {
+		transform: rotate(45deg) scale(0, 0.8) rotate(-45deg);
+	}
+
+	100% {
+		transform: rotate(45deg) scale(1, 1) rotate(-45deg);
+	
+}
+
+@keyframes logo-showw {
+	0% {
+		stroke-width: 0;
+	}
+
+	100% {
+		stroke-width: 4;
+	}
+}

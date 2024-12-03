@@ -1,0 +1,76 @@
+#about {
+    pointer-events: initial;
+	overflow-y: auto;
+	height: calc(100vh - 200px);
+	padding: 1em max(32px, calc(0.5 * max(0px, calc(100% - 800px)))) 2em;
+}
+
+
+.profile {
+    display: flex;
+    flex-direction: row;
+}
+.profile-left {
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
+}
+.profile-right{
+    padding-top: 2em;
+    padding-left: 1em;
+    flex-grow: 1;
+}
+
+.name {
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.block {
+    margin-bottom: 1em;
+}
+
+#about h2 {
+    margin: 1em 0 0.75em 0;
+}
+
+
+.profile dt,
+.likes dt {
+    float: left;
+}
+
+.profile dd:not(:last-child) {
+    float: left;
+    margin: 0;
+}
+
+dd::before {
+    font-weight: normal;
+    color: #c0c0c0;
+    margin: 0 0.5em;
+}
+
+.profile dd::before,
+.likes dd::before {
+    content: "/";
+    margin: 0 0.25em;
+}
+
+dd {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    image-rendering: pixelated;
+}
+
+.grid {
+    display: grid;
+    overflow: hidden;
+}
