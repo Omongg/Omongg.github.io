@@ -1,1 +1,1 @@
-This is my portfolio as a digitalartist.
+This is my portfolio web page as a digitalartist.
