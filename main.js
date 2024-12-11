@@ -54,10 +54,7 @@ window.onpopstate = function(event) {
 };
 
 // 초기 페이지 설정
-window.onload = function() {
-    const path = window.location.pathname.slice(1);
-    loadContent(path || '');
-};
+
 
 //초기화 관리
 function init() {
@@ -343,7 +340,7 @@ const pixelArt = [
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1],
-    [1,0,0,1,0,0,1,0,0,1,0,0,1,1,1,1,0,1,0,1,0,0,0,1],
+    [1,0,0,1,0,0,1,0,0,1,0,0,1,1,1,1,0,1,0,1,0,0,1,1],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [0,1,1,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,1,1,0],
     [0,0,1,0,0,1,1,0,0,1,0,0,0,1,0,0,0,1,1,0,0,1,0,0],
@@ -365,8 +362,8 @@ const pixelArt = [
 
 // 픽셀 크기
 const pixelSize = 10;
-
 // 픽셀 아트 그리기
+/*
 pixelArt.forEach((row, y) => {
     row.forEach((pixel, x) => {
         if (pixel === 1) {
@@ -374,4 +371,80 @@ pixelArt.forEach((row, y) => {
             ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
         }
     });
-});
+});*/
+// 애니메이션을 위한 변수들
+let animatedPixelsBlack = [
+    {x: 5, y: 11},{x: 17, y:11}
+]
+let animatedPixelsWhite = [
+    {x: 5, y: 10},{x: 6, y: 10},{x: 5, y: 12},{x: 6, y: 12},
+    {x: 17, y: 10},{x: 18, y: 10},{x: 17, y: 12},{x: 18, y: 12}
+]; // 애니메이션할 픽셀의 좌표
+let isVisible = false;
+let lastFrameTime = 0;
+
+const BLINK_INTERVAL = 4000; // 깜박임 간격 (5초)
+let blinkCount = 0; // 깜박임 횟수
+let blinkDelay1 = 500
+let blinkDelay2 = 300; // 깜박임 사이의 지연 시간 (밀리초)
+
+// 픽셀 아트 그리기 함수 수정
+function drawPixelArt(timestamp) {
+    // 캔버스 초기화
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // 일반 픽셀 그리기
+    pixelArt.forEach((row, y) => {
+        row.forEach((pixel, x) => {
+            if (pixel === 1) {
+                ctx.fillStyle = 'black';
+                ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+            }
+        });
+    });
+    
+    // 애니메이션 픽셀 업데이트
+    if (timestamp - lastFrameTime > BLINK_INTERVAL) {
+        blinkCount = 0; // 깜박임 횟수 초기화
+        lastFrameTime = timestamp; // 마지막 시간 업데이트
+    }
+    setTimeout(()=> {
+        // 깜박임 애니메이션
+        if (blinkCount < 2) {
+            isVisible = true; // 눈 깜박임 상태
+            blinkAnimate();
+        } 
+    },blinkDelay1);
+
+   
+    
+    setTimeout(() => {
+        requestAnimationFrame(drawPixelArt); // 다음 프레임 요청
+    }, blinkDelay2);
+}
+
+function blinkAnimate(){
+    ctx.fillStyle = 'white'; // 눈감는 애니메이션
+    animatedPixelsWhite.forEach(pixel => {
+        ctx.fillRect(pixel.x * pixelSize, pixel.y * pixelSize, pixelSize, pixelSize);
+    });
+    
+    ctx.fillStyle = 'black';
+    animatedPixelsBlack.forEach(pixel => {
+        ctx.fillRect(pixel.x * pixelSize, pixel.y * pixelSize, pixelSize, pixelSize);
+    });
+    
+    // 깜박임 횟수 증가
+    if (isVisible) {
+        blinkCount++;
+    }
+}
+
+// 애니메이션 시작
+requestAnimationFrame(drawPixelArt);
+
+
+
+
+
+
